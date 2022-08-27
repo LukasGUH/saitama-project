@@ -16,7 +16,7 @@ Para rodar o projeto, lembre-se de ter as seguintes ferramentas instaladas:
   - node
   - npm
   - Rancher Desktop ou Docker Desktop
-    Obs.: No caso do Rancher Desktop utilizar a versão do dockerd e não do containerd.
+    - No caso do Rancher Desktop utilizar a versão do dockerd e não do containerd.
 
 Com todas essas ferramentas instaladas execute os seguintes comandos dentro do diretório raiz do projeto.
 
