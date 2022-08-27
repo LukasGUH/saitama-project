@@ -46,7 +46,7 @@ Após isso poderá executar o terceiro comando que é:
 docker-compose up --build
 ```
 
-E então terá o projeto executando na porta 8000, e portanto você pode verificar se ele subu com sucesso acessando o endereço abaixo:
+E então terá o projeto executando na porta 8000 (Lembrando que na primeira vez esse comando pode demorar alguns minutos), e portanto você pode verificar se ele subiu com sucesso acessando o endereço abaixo:
 
 ```
 localhost:8000/
