@@ -35,7 +35,7 @@ class App {
         data: {
           app: {
             name: 'saitama-project',
-            version: '1.0.1',
+            version: process.env.VERSION,
             description:
               'saitama-project in node with expressjs and typescript',
             host: `localhost:${process.env.PORT}`,
