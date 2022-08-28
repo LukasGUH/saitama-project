@@ -1,0 +1,29 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Saitama-project",
+    "description": "API for animes and lists of animes.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Info",
+        "description": "Endpoint for verify if the API is up.",
+        "responses": {
+          "200": {
+            "description": "API is up for ready"
+          },
+          "500": {
+            "description": "Generic Error"
+          }
+        }
+      }
+    }
+  }
+}

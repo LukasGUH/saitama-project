@@ -6,6 +6,8 @@ import cors from 'cors';
 import { json, urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import database from './database';
+import swaggerUI from 'swagger-ui-express';
+import swaggerFile from './documentation/swagger.json';
 
 import infoRoutes from './routes';
 
@@ -32,6 +34,7 @@ class App {
 
   private setupRoutes(): void {
     this.app.use('/', infoRoutes);
+    this.app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
   }
 }
 
