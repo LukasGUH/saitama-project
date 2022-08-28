@@ -7,6 +7,8 @@ import { json, urlencoded } from 'body-parser';
 import mongoose from 'mongoose';
 import database from './database';
 
+import infoRoutes from './routes';
+
 class App {
   public app: express.Application;
   public database: mongoose.Connection;
@@ -29,23 +31,7 @@ class App {
   }
 
   private setupRoutes(): void {
-    this.app.use('/', (req: express.Request, res: express.Response) => {
-      res.status(200).send({
-        success: true,
-        data: {
-          app: {
-            name: 'saitama-project',
-            version: process.env.VERSION,
-            description:
-              'saitama-project in node with expressjs and typescript',
-            host: `localhost:${process.env.PORT}`,
-            port: process.env.PORT,
-            ready: 'true',
-          },
-        },
-        errors: [],
-      });
-    });
+    this.app.use('/', infoRoutes);
   }
 }
 
