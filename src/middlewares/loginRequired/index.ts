@@ -5,6 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 import { IResponse } from '../../interfaces';
+import * as message from '../../utils';
 
 const loginRequired = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -17,6 +18,7 @@ const loginRequired = (req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
       const response: IResponse = {
         success: false,
+        message: message.middlewareFailed,
         errors: [err.message],
       };
 

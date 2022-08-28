@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
 import { IResponse } from '../../interfaces';
+import * as message from '../../utils';
 
 class infoController {
   infoApi(req: Request, res: Response) {
     try {
       const response: IResponse = {
         success: true,
+        message: message.infoSuccess,
         data: {
           app: {
             name: 'saitama-project',
@@ -25,6 +27,7 @@ class infoController {
       if (err instanceof Error) {
         const response: IResponse = {
           success: false,
+          message: message.infoFailed,
           errors: [err.message],
         };
 
