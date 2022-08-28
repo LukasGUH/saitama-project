@@ -35,7 +35,8 @@ npm run build
 O terceiro comando depende de algumas configurações iniciais, sendo elas:
 
  - Em seu arquivo .env adicione as seguintes tags:
-    - MONGO_URL: mongodb://mongo:27017/saitama-project
+    - MONGO_URL=Olhar no Trello
+    - JWT_SECRET=Olhar no Trello
     - PORT=8000
     - VERSION=1.0.0
     - LOG_LEVEL=info
