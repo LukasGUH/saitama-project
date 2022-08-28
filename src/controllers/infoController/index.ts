@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
+import { IResponse } from '../../interfaces';
 
 class infoController {
   infoApi(req: Request, res: Response) {
     try {
-      return res.status(200).send({
+      const response: IResponse = {
         success: true,
         data: {
           app: {
@@ -17,14 +18,17 @@ class infoController {
           },
         },
         errors: [],
-      });
+      };
+
+      return res.status(200).send(response);
     } catch (err) {
       if (err instanceof Error) {
-        return res.status(500).send({
+        const response: IResponse = {
           success: false,
-          data: '',
           errors: [err.message],
-        });
+        };
+
+        return res.status(500).send(response);
       }
     }
   }

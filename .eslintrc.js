@@ -24,5 +24,6 @@ module.exports = {
     'no-useless-escape': 'off',
     'no-unsafe-optional-chaining': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };
