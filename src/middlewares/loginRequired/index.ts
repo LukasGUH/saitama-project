@@ -4,7 +4,7 @@ dotenv.config();
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { IResponse } from '../../interfaces';
+import HTTPError from '../../errors';
 import * as message from '../../utils';
 
 const loginRequired = (req: Request, res: Response, next: NextFunction) => {
@@ -16,13 +16,9 @@ const loginRequired = (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (err) {
     if (err instanceof Error) {
-      const response: IResponse = {
-        success: false,
-        message: message.middlewareFailed,
-        errors: [err.message],
-      };
-
-      res.status(401).send(response);
+      res.send(
+        new HTTPError(false, message.middlewareFailed, 401, [err.message]),
+      );
     }
   }
 };

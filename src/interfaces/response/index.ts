@@ -6,7 +6,7 @@ interface IData {
 
 export interface IResponse {
   success: boolean;
-  message: string;
+  messages: string;
   token?: string;
   data?: IData;
   errors?: TErrors;

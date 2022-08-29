@@ -10,6 +10,8 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerFile from './documentation/swagger.json';
 
 import infoRoutes from './routes';
+import HTTPError from './errors';
+import * as message from './utils';
 
 class App {
   public app: express.Application;
@@ -35,6 +37,10 @@ class App {
   private setupRoutes(): void {
     this.app.use('/', infoRoutes);
     this.app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
+
+    this.app.use((req, res) => {
+      res.send(new HTTPError(false, message.badRequest, 400));
+    });
   }
 }
 

@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { IResponse } from '../../interfaces';
+import HTTPError from '../../errors';
 import * as message from '../../utils';
 
 class infoController {
@@ -7,16 +8,16 @@ class infoController {
     try {
       const response: IResponse = {
         success: true,
-        message: message.infoSuccess,
+        messages: message.infoSuccess,
         data: {
           app: {
             name: 'saitama-project',
-            version: process.env.VERSION,
+            version:
+              require('../../../package.json').version || process.env.VERSION,
             description:
               'saitama-project in node with expressjs and typescript',
             host: `localhost:${process.env.PORT}`,
             port: process.env.PORT,
-            ready: 'true',
           },
         },
         errors: [],
@@ -25,13 +26,9 @@ class infoController {
       return res.status(200).send(response);
     } catch (err) {
       if (err instanceof Error) {
-        const response: IResponse = {
-          success: false,
-          message: message.infoFailed,
-          errors: [err.message],
-        };
-
-        return res.status(500).send(response);
+        return res.send(
+          new HTTPError(false, message.infoFailed, 500, [err.message]),
+        );
       }
     }
   }
