@@ -6,7 +6,7 @@ export interface IMessagesError {
 
 export interface IError extends Error {
   success: boolean;
-  messages?: IMessagesError;
+  messages: IMessagesError;
   status: TStatus;
   errors?: string[];
 }
