@@ -1,22 +1,25 @@
-import { IError } from '../interfaces';
+import { IError, IMessagesError } from '../interfaces';
+import { TStatus } from '../interfaces/types';
 
 class HTTPError extends Error implements IError {
   public success: boolean;
-  public messages: string;
-  public status: number;
+  public status: TStatus;
+  public messages: IMessagesError = {
+    '200': 'Ok',
+    '201': 'Created',
+    '202': 'Accepted',
+    '400': 'Bad Request',
+    '401': 'Unauthorized',
+    '500': 'Internal Server Error',
+    '503': 'Service Unavailable',
+  };
   public errors?: string[];
 
-  constructor(
-    success: boolean,
-    messages: string,
-    status: number,
-    errors?: string[],
-  ) {
-    const message = [messages];
-    super(...message);
+  constructor(success: boolean, status: TStatus, errors?: string[]) {
+    super();
     this.success = success;
-    this.messages = messages;
     this.status = status;
+    this.messages = this.messages[status];
     this.errors = errors;
   }
 }

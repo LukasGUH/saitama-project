@@ -11,7 +11,6 @@ import swaggerFile from './documentation/swagger.json';
 
 import infoRoutes from './routes';
 import HTTPError from './errors';
-import * as message from './utils';
 
 class App {
   public app: express.Application;
@@ -39,7 +38,7 @@ class App {
     this.app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
     this.app.use((req, res) => {
-      res.send(new HTTPError(false, message.badRequest, 400));
+      res.send(new HTTPError(false, 400));
     });
   }
 }

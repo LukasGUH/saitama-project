@@ -5,7 +5,6 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 import HTTPError from '../../errors';
-import * as message from '../../utils';
 
 const loginRequired = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -16,9 +15,7 @@ const loginRequired = (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (err) {
     if (err instanceof Error) {
-      res.send(
-        new HTTPError(false, message.middlewareFailed, 401, [err.message]),
-      );
+      res.send(new HTTPError(false, 401, [err.message]));
     }
   }
 };

@@ -26,9 +26,7 @@ class infoController {
       return res.status(200).send(response);
     } catch (err) {
       if (err instanceof Error) {
-        return res.send(
-          new HTTPError(false, message.infoFailed, 500, [err.message]),
-        );
+        return res.send(new HTTPError(false, 500, [err.message]));
       }
     }
   }
