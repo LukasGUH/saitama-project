@@ -44,7 +44,7 @@ O terceiro comando depende de algumas configurações iniciais, sendo elas:
 Após isso poderá executar o terceiro comando que é:
 
 ``` bash
-npm run docker-start
+npm run docker:start
 ```
 
 E então terá o projeto executando na porta 8000 (Lembrando que na primeira vez esse comando pode demorar alguns minutos), e portanto você pode verificar se ele subiu com sucesso acessando o endereço abaixo:

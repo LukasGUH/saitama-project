@@ -9,8 +9,8 @@ import database from './database';
 import swaggerUI from 'swagger-ui-express';
 import swaggerFile from './documentation/swagger.json';
 
-import infoRoutes from './routes';
-import HTTPError from './errors';
+import { infoRoutes } from './routes';
+import { HTTPError } from './errors';
 
 class App {
   public app: express.Application;

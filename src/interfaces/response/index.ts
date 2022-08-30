@@ -1,4 +1,4 @@
-import { TErrors } from '../types';
+import { TStatus } from '../types';
 
 interface IData {
   [key: string]: any;
@@ -6,8 +6,9 @@ interface IData {
 
 export interface IResponse {
   success: boolean;
-  messages: string;
+  messages?: string;
+  status?: TStatus;
   token?: string;
   data?: IData;
-  errors?: TErrors;
+  errors?: string[];
 }

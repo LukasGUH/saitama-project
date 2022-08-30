@@ -17,10 +17,10 @@
         "description": "Endpoint for verify if the API is up.",
         "responses": {
           "200": {
-            "description": "API is up for ready"
+            "description": "Ok (success)"
           },
           "500": {
-            "description": "Generic Error"
+            "description": "Internal Server Error (failed)"
           }
         }
       }

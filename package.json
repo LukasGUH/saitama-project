@@ -9,8 +9,8 @@
     "test:coverage": "jest --coverage --silent --noStackTrace",
     "build": "tsc",
     "start": "node dist/server.js",
-    "dev-start": "nodemon src/server.ts",
-    "docker-start": "npm run build && docker-compose up --build"
+    "dev:start": "nodemon src/server.ts",
+    "docker:start": "npm run build && docker-compose up --build"
   },
   "keywords": [],
   "author": "",

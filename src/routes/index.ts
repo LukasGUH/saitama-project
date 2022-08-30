@@ -1,1 +1,1 @@
-export { default } from './infoRoutes';
+export { default as infoRoutes } from './infoRoutes';

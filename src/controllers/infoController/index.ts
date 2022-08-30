@@ -1,14 +1,13 @@
 import { Request, Response } from 'express';
 import { IResponse } from '../../interfaces';
-import HTTPError from '../../errors';
-import * as message from '../../utils';
+import { HTTPError, HTTPHandler } from '../../errors';
 
 class infoController {
-  infoApi(req: Request, res: Response) {
+  public infoApi(req: Request, res: Response) {
     try {
       const response: IResponse = {
         success: true,
-        messages: message.infoSuccess,
+        status: 200,
         data: {
           app: {
             name: 'saitama-project',
@@ -20,10 +19,9 @@ class infoController {
             port: process.env.PORT,
           },
         },
-        errors: [],
       };
 
-      return res.status(200).send(response);
+      return res.json(new HTTPHandler(response));
     } catch (err) {
       if (err instanceof Error) {
         return res.send(new HTTPError(false, 500, [err.message]));

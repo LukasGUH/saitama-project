@@ -1,1 +1,1 @@
-export { default } from './loginRequired';
+export { default as loginRequired } from './loginRequired';

@@ -4,7 +4,7 @@ dotenv.config();
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-import HTTPError from '../../errors';
+import { HTTPError } from '../../errors';
 
 const loginRequired = (req: Request, res: Response, next: NextFunction) => {
   try {

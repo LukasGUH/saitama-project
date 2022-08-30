@@ -1,1 +1,1 @@
-export { default } from './infoController';
+export { default as infoController } from './infoController';

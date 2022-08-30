@@ -1,12 +1,18 @@
 import { TStatus } from '../types';
 
-export interface IMessagesError {
+export interface IMessages {
   [key: string]: any;
 }
 
-export interface IError extends Error {
+export interface IData {
+  [key: string]: any;
+}
+
+export interface IHandler extends Error {
   success: boolean;
-  messages: IMessagesError;
+  messages: IMessages;
   status: TStatus;
+  data?: IData;
+  token?: string;
   errors?: string[];
 }
