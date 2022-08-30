@@ -38,7 +38,7 @@ class App {
     this.app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
     this.app.use((req, res) => {
-      res.send(new HTTPError(false, 404));
+      res.json(new HTTPError(false, 404));
     });
   }
 }

@@ -15,7 +15,7 @@ const loginRequired = (req: Request, res: Response, next: NextFunction) => {
     next();
   } catch (err) {
     if (err instanceof Error) {
-      res.send(new HTTPError(false, 401, [err.message]));
+      res.json(new HTTPError(false, 401, [err.message]));
     }
   }
 };

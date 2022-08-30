@@ -5,9 +5,6 @@ class HTTPError extends Error implements IHandler {
   public success: boolean;
   public status: TStatus;
   public messages: IMessages = {
-    '200': 'Ok',
-    '201': 'Created',
-    '202': 'Accepted',
     '400': 'Bad Request',
     '401': 'Unauthorized',
     '404': 'Not Found',

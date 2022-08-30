@@ -24,7 +24,7 @@ class infoController {
       return res.json(new HTTPHandler(response));
     } catch (err) {
       if (err instanceof Error) {
-        return res.send(new HTTPError(false, 500, [err.message]));
+        return res.json(new HTTPError(false, 500, [err.message]));
       }
     }
   }
