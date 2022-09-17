@@ -4,15 +4,36 @@ dotenv.config();
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-import { HTTPError } from '../../errors';
+import { IResponse, IUserPayload } from '../../interfaces';
+import { User } from '../../database/models';
+import { HTTPError, HTTPHandler } from '../../errors';
 
-const loginRequired = (req: Request, res: Response, next: NextFunction) => {
+const loginRequired = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   try {
-    const [, token] = req.headers.authorization.split(' ');
+    const token = req.headers.authorization.split(' ')[1];
+    const { nickName } = jwt.verify(
+      token,
+      process.env.JWT_SECRET,
+    ) as IUserPayload;
 
-    const decode = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decode;
-    next();
+    const user = await User.findOne({ nickName: nickName });
+
+    if (!user) {
+      const response: IResponse = {
+        success: false,
+        status: 401,
+      };
+
+      return res.json(new HTTPHandler(response));
+    }
+
+    req.user = user;
+
+    return next();
   } catch (err) {
     if (err instanceof Error) {
       res.json(new HTTPError(false, 401, [err.message]));

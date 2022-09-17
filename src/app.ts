@@ -9,7 +9,7 @@ import database from './database';
 import swaggerUI from 'swagger-ui-express';
 import swaggerFile from './documentation/swagger.json';
 
-import { infoRoutes } from './routes';
+import { infoRoutes, userRoutes } from './routes';
 import { HTTPError } from './errors';
 
 class App {
@@ -35,6 +35,7 @@ class App {
 
   private setupRoutes(): void {
     this.app.use('/', infoRoutes);
+    this.app.use('/auth', userRoutes);
     this.app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
     this.app.use((req, res) => {

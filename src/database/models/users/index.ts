@@ -1,4 +1,4 @@
-import { model, Schema, SchemaTypes } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { IUser } from '../../../interfaces';
 
 const userSchema: Schema<IUser> = new Schema(
@@ -24,23 +24,6 @@ const userSchema: Schema<IUser> = new Schema(
     password: {
       type: String,
       required: true,
-    },
-    favorites: [
-      {
-        type: String,
-        required: false,
-      },
-    ],
-    lists: {
-      type: SchemaTypes.Mixed,
-      required: false,
-      default: {
-        nextWatch: [],
-        completed: [],
-        inProgress: [],
-        dropped: [],
-        topTen: [],
-      },
     },
   },
   {
