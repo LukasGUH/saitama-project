@@ -3,3 +3,4 @@ export * from './validation';
 export * from './errors';
 export * from './users';
 export * from './lists';
+export * from './animes';
